@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load template_simple_tags %}
+
+{% block vendor %}
+  <script src="{% static 'js/validator.min.js' %}"></script>
+  <script src="{% static 'js/js.cookie.js' %}"></script>
+  {% if request.user == profile.user %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {% endif %}
+{% endblock %}
+
+{% block page %}
+
+<div class="col-md-6">
+  {% if request.user == profile.user %}
+  {% if postError %}
+
+    <div class="alert alert-warning alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Warning!</strong> {{ postError }}
+    </div>
+
+  {% endif %}
+
+  <div class="text-center">
+    <h1><b>{{ profile.displayname}}</b></h1>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form class="form-horizontal" method="POST" enctype="multipart/form-data" role="form" data-toggle="validator">
+        {% csrf_token %}
+        <input type="hidden" name="profile_form" value="profile_form">
+        <img src="{{ profile.avatar }}" class="img-responsive center-block">
+        <hr/>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Display username</label>
+          <div class="col-sm-9">
+            <input class="form-control" value="{{ profile.displayname }}" name="displayname" required>
+            <div class="help-block with-errors">* required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Slogan</label>
+          <div class="col-sm-9">
+            <input class="form-control" value="{{ profile.slogan }}" name="slogan">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">About</label>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control" name="about" placeholder="Your profile's about">{{ profile.about }}</textarea>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Email preference</label>
+          <div class="col-sm-9">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox-emailoptin" type="checkbox" name="emailoptin"{% if profile.emailoptin %} checked{% endif %}>
+              <label for="checkbox-emailoptin">
+              Send me private emails when other registered users want to contact me. Private means: We disclose your email.
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <br/>
+        <button class="btn btn-success" type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+
+  {% else %}{# this endif: if request.user == profile.user #}
+
+  <div class="text-center">
+    <h1><b>{{ profile.displayname}}</b></h1>
+    <p>{{ profile.slogan }}</p>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <img src="{{ profile.avatar }}" class="img-responsive center-block">
+      <h3 class="text-uppercase"><b>About {{ profile.displayname }}</b></h3>
+      <hr/>
+      <p>{{ profile.about|linebreaks }}</p>
+      <form method="POST" action="/conversations/">
+        {% csrf_token %}
+          <input name="user_id" value="{{ profile.user.id }}" hidden>
+          <button type="submit" class="btn btn-success btn-block">Contact Me</button>
+      </form>
+    </div>
+  </div>
+
+  {% endif %}
+
+
+<!-- Start extra forms for email validation -->
+{% if request.user == profile.user %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Set or change email</h4>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" method="POST" enctype="multipart/form-data" role="form" data-toggle="validator">
+      {% csrf_token %}
+      <input type="hidden" name="emailvalidate_form" value="emailvalidate_form">
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Actual email</label>
+        <div class="col-sm-9">
+          <div class="fake-input">
+            {{ profile.vanitymail}}{% autoescape off %}{% render_email_verified profile %}{% endautoescape %}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">New email</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="email" value="" name="vanitymail" required>
+          <div class="help-block with-errors">* required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Confirm</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="email" value="" name="confirm_vanitymail" required>
+          <div class="help-block with-errors">* required</div>
+        </div>
+      </div>
+      <div class="g-recaptcha" data-sitekey="{% settings_value "RECAPTCHA_KEY" %}"></div>
+      <br />
+      <button class="btn btn-success" type="submit">Send verification link</button>
+    </form>
+  </div>
+</div>
+
+{% endif %}
+<!-- End extra forms for email validation -->
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block vendor %}
+  <!-- preload scripts here, i.e. <script src=....></script> -->
+{% endblock %}
+
+{% block page %}
+
+  <h1 style="margin-bottom: 30px">My Gigs</h1>
+  <div class="panel panel-default">
+    <table class="table table-bordered table-striped">
+      <thead class="bg-success">
+        <tr>
+          <th>
+            <th>Gig Title</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gig in gigs %}
+        <tr class="row-block">
+          <td><a class="anchor-block" href="{% url 'edit_gig' gig.id %}">{{ forloop.counter}}</a></td>
+          <td><a class="anchor-block" href="{% url 'edit_gig' gig.id %}">{{ gig.title }}</a></td>
+          <td><a class="anchor-block" href="{% url 'edit_gig' gig.id %}"
+                  {% if noStripeAccountYet %}title="Link to Stripe account so you can be paid"{% endif %}>{% if gig.status %} Active {% else %}<span class="font-weight-bold text-danger"> DISABLED </span>{% endif %}</a></td>
+          <td>
+            <form action="{% url 'delete_gig' gig.id %}" method="POST">
+              {% csrf_token %}
+              <button class="btn btn-default btn-sm " type="submit" onclick="return confirm('are you sure?')"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+            </form>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

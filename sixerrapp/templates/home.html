@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+  <div class="row">
+    <div class="col-md-12">
+      <a href="{% url 'overview' %}"><img src="{% static 'img/gamer-03-over.png' %}" class = "banner"></a>
+    </div>
+
+  </div>
+
+{% endblock %}

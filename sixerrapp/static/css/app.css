@@ -1,0 +1,312 @@
+.container {
+  max-width: 1100px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top {
+  position: inherit;
+}
+
+.navbar-brand .glyphicon.glyphicon-info-sign {
+    font-size: 1.4em;
+    margin-top: -2px;
+}
+
+.navbar-brand .logo {
+  height: 23px;
+}
+
+.nav-username {
+  padding: 0 5px;
+}
+
+.nav-avatar {
+  height: 22px;
+  width: 22px;
+}
+
+.alert-in-login {
+  margin: 0 15px;
+  padding: 6px;
+  margin-bottom: 0;
+}
+
+a {
+  color: #323232;
+}
+
+a:hover {
+  color: #0bb536;
+}
+
+#body {
+  background-color: #f7f7f7;
+  /*
+  margin-top: 20px;
+  */
+}
+
+#body .banner {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* gig thumbnail */
+/*
+.dollar:before {
+    content: '$';
+    font-size: 0.8em;
+    vertical-align: top;
+}
+
+.verified-rank {
+  margin-right: 5px;
+  height: 24px;
+  width: 24px;
+}
+
+#footer {
+  padding: 20px 0;
+}
+*/
+.footer {
+  padding: 60px 0;
+  background: #111112;
+  color: #666666;
+}
+.footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer .social {
+  color: black;
+}
+.footer li, .footer a {
+  color: #666666;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 24px;
+}
+.footer .title {
+  margin-bottom: .5rem;
+  font-size: 14px;
+  color: #ccc;
+  border-bottom: 1px solid #333;
+}
+.footer a:hover {
+  color: #65c2ed;
+}
+
+.social a {
+  display: inline-block;
+  padding: 7px 8px 9px 8px;
+  width: 40px;
+  height: 40px;
+  margin: 0 4px;
+  background: #fff;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.social a:hover {
+  background: #65c2ed;
+}
+
+@media screen and (max-width: 768px) {
+  .footer .col-sm-6 {
+    padding-bottom: 2rem;
+  }
+}
+
+/* Row colors */
+
+.bg-gray {
+  background-color: #ddd;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.green {
+  color: #0bb536;
+}
+
+/* Form inputs */
+
+.checkbox {
+  padding-left: 20px; }
+  .checkbox label {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+    .checkbox label::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      left: 0;
+      margin-left: -20px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      background-color: #fff;
+      -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+      -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+      transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+    .checkbox label::after {
+      display: inline-block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 0;
+      margin-left: -20px;
+      padding-left: 3px;
+      padding-top: 1px;
+      font-size: 11px;
+      color: #555555; }
+  .checkbox input[type="checkbox"] {
+    opacity: 0; }
+    .checkbox input[type="checkbox"]:focus + label::before {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px; }
+    .checkbox input[type="checkbox"]:checked + label::after {
+      font-family: 'FontAwesome';
+      content: "\f00c"; }
+    .checkbox input[type="checkbox"]:disabled + label {
+      opacity: 0.65; }
+      .checkbox input[type="checkbox"]:disabled + label::before {
+        background-color: #eeeeee;
+        cursor: not-allowed; }
+  .checkbox.checkbox-circle label::before {
+    border-radius: 50%; }
+  .checkbox.checkbox-inline {
+    margin-top: 0; }
+
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+  background-color: #428bca;
+  border-color: #428bca; }
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+  background-color: #d9534f;
+  border-color: #d9534f; }
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.checkbox-info input[type="checkbox"]:checked + label::before {
+  background-color: #5bc0de;
+  border-color: #5bc0de; }
+.checkbox-info input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+  background-color: #f0ad4e;
+  border-color: #f0ad4e; }
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.checkbox-success input[type="checkbox"]:checked + label::before {
+  background-color: #5cb85c;
+  border-color: #5cb85c; }
+.checkbox-success input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+/* File uploader */
+
+.qq-gallery .qq-upload-button {
+  background: #0bb536;
+  border: 1px solid #0bb536;
+}
+
+.qq-gallery .qq-upload-button-hover {
+    background: #098a29;
+}
+
+.qq-gallery .qq-progress-bar {
+    background: #0bb536;
+}
+
+/* ------------
+   Overview
+   ------------ */
+.sub-header {
+  padding: 20px 0 0 0;
+  text-align: center;
+}
+
+.sub-text {
+  padding: 0 0 30px 0;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* ------------
+   FAQ
+   ------------ */
+#faqs .panel-body a {
+  color:blue;
+  text-decoration:underline
+}
+
+/* ------------
+  profile
+  ------------ */
+
+.fake-input {
+      display: block;
+      width: 100%;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #ddd;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+      -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+
+.fake-input img {
+  vertical-align: top;
+  max-height: 1.4em;
+  max-width: 1.4em;
+}
+
+/***************
+***** misc.*****
+***************/
+
+.login-bullet {
+  margin-right: 10px;
+}
+
+.anchor-block {
+  display: block;
+}
+
+.anchor-block:link {
+    text-decoration: none;
+}
+
+.anchor-block:visited {
+    text-decoration: none;
+}
+
+.row-block:hover {
+  background-color: lightgray !important;
+}
+
+fieldset, label { margin: 0; padding: 0; }
+/* body{ margin: 20px; } */
+h1 { font-size: 1.5em; margin: 10px; }

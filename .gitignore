@@ -1,0 +1,7 @@
+__pycache__/
+db.sqlite3
+*.pyc
+lalosecrets.sh
+local_secrets.sh
+.gitlab-ci.yml
+myrequirements.txt
